@@ -1,0 +1,61 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_extName__",
+  "description": "__MSG_extDesc__",
+  "version": "1.75.4",
+  "author": {"email": "docs-hosted-app-own@google.com"},
+  "icons": {
+    "128": "128.png"
+  },
+  "default_locale": "en_US",
+  "background": {
+    "persistent": true,
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_action": {
+    "default_icon": {
+      "128": "128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "js": [
+        "contentscript.js"
+      ],
+      "match_about_blank": true,
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "all_frames": true,
+      "js": [
+        "background.js"
+      ],
+      "matches": [
+        "https://sts-bergstedt.de/iserv/*"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "<all_urls>",
+    "contextMenus",
+    "webRequest",
+    "webRequestBlocking",
+    "webNavigation",
+    "storage",
+    "unlimitedStorage",
+    "notifications",
+    "cookies",
+    "idle",
+    "alarms"
+  ]
+}
